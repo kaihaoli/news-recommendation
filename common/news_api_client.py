@@ -1,3 +1,7 @@
+'''
+ Function : Get News info From "NewsAPI"
+'''
+
 import requests
 import json
 
