@@ -1,3 +1,7 @@
-pymongo
 requests
 pika
+pymongo
+redis
+sklearn
+requests
+newspaper
