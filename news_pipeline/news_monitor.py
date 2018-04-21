@@ -16,7 +16,7 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 
 NEWS_TIME_OUT_IN_SECONDS = 3600 * 24
-SLEEP_TIME_IN_SECOUNDS = 30
+SLEEP_TIME_IN_SECOUNDS = 20
 
 # Clound AMQP
 SCRAPE_NEWS_TASK_QUEUE_URL = "amqp://bddugymf:6Vf5lxc4tfV8HHP1MSPJO3yzhl_iGlVR@eagle.rmq.cloudamqp.com/bddugymf"

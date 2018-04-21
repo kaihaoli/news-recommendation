@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+'''
+    News Deduper :
+    # 1 Fetch News from MQ
+    # 2 Check Duplicate New
+    # 3 Save to MongoDB
+'''
+
 import datetime
 import os
 import sys
@@ -16,7 +23,7 @@ from cloudAMQP_client import CloudAMQPClient
 DEDUPE_NEWS_TASK_QUEUE_URL = "amqp://bddugymf:6Vf5lxc4tfV8HHP1MSPJO3yzhl_iGlVR@eagle.rmq.cloudamqp.com/bddugymf"
 DEDUPE_NEWS_TASK_QUEUE_NAME = "tap-news-dedupe-news-task-queue"
 
-SLEEP_TIME_IN_SECONDS = 1
+SLEEP_TIME_IN_SECONDS = 5
 
 NEWS_TABLE_NAME = "news"
 
@@ -51,7 +58,7 @@ def handle_message(msg):
         tfidf = TfidfVectorizer().fit_transform(documents)
         pairwise_sim = tfidf * tfidf.T
 
-        print pairwise_sim.A
+        #print pairwise_sim.A
 
         rows, _ = pairwise_sim.shape
 

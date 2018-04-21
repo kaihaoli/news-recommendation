@@ -18,7 +18,7 @@ DEDUPE_NEWS_TASK_QUEUE_NAME = "tap-news-dedupe-news-task-queue"
 SCRAPE_NEWS_TASK_QUEUE_URL = "amqp://bddugymf:6Vf5lxc4tfV8HHP1MSPJO3yzhl_iGlVR@eagle.rmq.cloudamqp.com/bddugymf"
 SCRAPE_NEWS_TASK_QUEUE_NAME = "tap-news-scrape-news-task-queue"
 
-SLEEP_TIME_IN_SECONDS = 5
+SLEEP_TIME_IN_SECONDS = 10
 
 dedupe_news_queue_client = CloudAMQPClient(DEDUPE_NEWS_TASK_QUEUE_URL, DEDUPE_NEWS_TASK_QUEUE_NAME)
 scrape_news_queue_client = CloudAMQPClient(SCRAPE_NEWS_TASK_QUEUE_URL, SCRAPE_NEWS_TASK_QUEUE_NAME)
@@ -28,13 +28,13 @@ def handle_message(msg):
         print 'message is broken'
         return
     task = msg
-    
+
     # Use newspaper to download & parse url
     article = Article(task['url'])
     article.download()
     article.parse()
 
-    print article.text
+    #print article.text
 
     task['text'] = article.text
 
